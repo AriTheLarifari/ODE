@@ -1,0 +1,228 @@
+\NeedsTeXFormat{LaTeX2e}[]
+\ProvidesPackage{mypckg}[2021/04/19 Custom Package]
+
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[a4paper,left=1.5cm,right=2cm,top=2cm,bottom=4cm,bindingoffset=5mm,]{geometry}
+\RequirePackage{natbib}
+\RequirePackage{graphicx}
+\RequirePackage{makeidx}
+\RequirePackage{amsmath,amsthm,amssymb,amsfonts,amscd,amsbsy,amsxtra, mathtools}
+\RequirePackage[ngerman]{babel}
+\RequirePackage{polynom}
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=newest}
+\RequirePackage{verbatim}
+\RequirePackage{ dsfont }
+\RequirePackage{fancyhdr}
+\RequirePackage{tikz}
+\RequirePackage{ wasysym }
+\RequirePackage{ marvosym }
+\RequirePackage{tcolorbox}
+\RequirePackage{siunitx}
+\RequirePackage{mathrsfs}
+\DeclareSIUnit\angstrom{\text {Å}}
+\RequirePackage{ifthen}
+\RequirePackage{tikz-cd}
+\usetikzlibrary{calc,positioning,hobby,decorations.pathreplacing,calligraphy,spy}
+\RequirePackage{tkz-euclide}
+\RequirePackage{faktor}
+\RequirePackage{esint}
+\RequirePackage{bm}
+\RequirePackage[overload]{empheq}
+\RequirePackage{tzplot}
+\RequirePackage{capt-of}
+\RequirePackage[outline]{contour} % glow around text
+\contourlength{2.3pt}
+\tcbuselibrary{theorems, breakable,}
+\tcbuselibrary{skins}
+\usetikzlibrary{patterns, plotmarks, positioning}
+\tikzset{every picture/.style=remember picture}
+\tikzset{>=latex}
+\tikzstyle{xline}=[xcol,thick,smooth]
+\tikzstyle{width}=[{Latex[length=5,width=3]}-{Latex[length=5,width=3]},thick]
+\tikzset{
+  traj/.style 2 args={xline,postaction={decorate},decoration={markings,
+    mark=at position #1 with {\arrow{<}},
+    mark=at position #2 with {\arrow{<}}}
+  }
+}
+
+
+
+\RequirePackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=black!50!white!60!blue, urlcolor=black!50!white!60!blue}
+
+\setlength{\parindent}{0em} 
+\pagestyle{empty}
+
+\DeclareMathOperator{\Lin}{\textrm{Lin}}
+\DeclareMathOperator{\supp}{\textrm{supp}}
+\DeclareMathOperator{\sgn}{\mathrm{sgn}}
+\DeclareMathOperator{\spann}{\mathrm{span}}
+\DeclareMathOperator{\spec}{\mathrm{spec}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\Ce}{\mathbb C \cup \{\infty\}}
+\DeclareMathOperator{\CC}{\mathbb C}
+\DeclareMathOperator{\ve}{\varepsilon}
+\DeclareMathOperator{\vp}{\varphi}
+\DeclareMathOperator{\pp}{\partial}
+\DeclareMathOperator{\TT}{\mathcal{T}}
+\DeclareMathOperator{\LL}{\mathcal{L}}
+\DeclareMathOperator{\MM}{\mathcal{M}}
+\DeclareMathOperator{\OO}{\mathcal{O}}
+\DeclareMathOperator{\Aa}{\mathcal{A}}
+\DeclareMathOperator{\FF}{\mathcal{F}}
+\DeclareMathOperator{\BB}{\mathcal{B}}
+\DeclareMathOperator{\PP}{\mathcal{P}}
+\DeclareMathOperator{\Sss}{\mathcal{S}}
+\DeclareMathOperator{\Nn}{\mathcal{N}}
+\DeclareMathOperator{\NN}{\mathbb N}
+\DeclareMathOperator{\VV}{\mathcal V}
+\DeclareMathOperator{\QQ}{\mathbb Q}
+\DeclareMathOperator{\KK}{\mathbb K}
+\DeclareMathOperator{\ZZ}{\mathbb Z}
+\DeclareMathOperator{\Gl}{\mathrm{Gl}}
+\DeclareMathOperator{\Sl}{\mathrm{Sl}}
+\DeclareMathOperator{\Ann}{\mathrm{Ann}}
+\DeclareMathOperator{\diag}{\mathrm{diag}}
+\DeclareMathOperator{\diam}{\mathrm{diam}}
+\DeclareMathOperator{\dist}{\mathrm{dist}}
+\DeclareMathOperator{\bl}{\mathrm{BL}}
+\DeclareMathOperator{\loc}{\mathrm{loc}}
+\DeclareMathOperator{\grad}{\mathrm{grad}}
+\DeclareMathOperator{\esssup}{\mathrm{ess\;sup}}
+\DeclareMathOperator{\Hom}{\mathrm{Hom}}
+\DeclareMathOperator{\ord}{\mathrm{ord}}
+\DeclareMathOperator{\Mon}{\mathrm{Mom}}
+\DeclareMathOperator{\Grup}{\mathrm{Grup}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\DeclareMathOperator{\ran}{\mathrm{ran}}
+\DeclareMathOperator{\dom}{\mathrm{dom}}
+\DeclareMathOperator{\op}{\mathrm{op}}
+\DeclareMathOperator{\area}{\mathrm{Area}}
+\DeclareMathOperator{\vol}{\mathrm{Vol}}
+\DeclareMathOperator{\Rea}{\textrm{Re}}
+\DeclareMathOperator{\Ima}{\textrm{Im}}
+\DeclareMathOperator{\End}{\textrm{End}}
+\DeclareMathOperator{\D}{\mathrm{d}}
+
+\colorlet{myred}{red!80!black}
+\colorlet{myblue}{blue!80!black}
+\colorlet{mygreen}{green!40!black}
+\colorlet{mypurple}{red!50!blue!90!black!80}
+\colorlet{mydarkred}{myred!80!black}
+\colorlet{mydarkblue}{myblue!80!black}
+\colorlet{mymagenta}{magenta}
+\colorlet{xcol}{blue!60!black}
+\colorlet{Defcol}{red!5}
+\colorlet{Satzcol}{blue!90!black!80!cyan!10!white}
+\colorlet{Korcol}{blue!10!white}
+\colorlet{Axcol}{purple!10!white}
+\colorlet{Bemcol}{white}
+\colorlet{Motcol}{cyan!10!white}
+\colorlet{Bspcol}{green!5!white!99!olive}
+
+\newcommand{\rg}{\textrm{rg}}
+\newcommand{\SL}{\mathrm{Sl}}
+\newcommand{\p}[2]{\langle #1,#2\rangle}
+\newcommand{\te}[1]{\text{ #1}}
+\newcommand{\im}{\textrm{im}}
+\newcommand{\Abb}{\textrm{Abb}}
+\newcommand{\tr}{\textrm{tr}}
+\newcommand{\RR}{\mathbb R}
+\newcommand{\I}{\mathrm{i}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\khar}{\textrm{char}}
+\newcommand{\einschraenkung}{\,\rule[-5pt]{0.4pt}{12pt}\,{}}
+\newcommand*\dd{\mathop{}\!\mathrm{d}}
+\newcommand*\rr{\mathop{}\Vec{r}\,}
+\newcommand*\nn{\mathop{}\Vec{\nabla}}
+\newcommand*\vv[1]{\mathop{}\begin{pmatrix}#1\end{pmatrix}}
+\newcommand*\reg[1]{\mathop{}C^2(#1)\cap C(\overline{#1})}
+\newcommand*\ms[1]{\mathclap{\substack{#1}}}
+\newcommand{\mathnode}[1]{%
+  \mathord{\tikz[baseline=(#1.base), inner sep = 0pt]{\node (#1) {$#1$};}}}
+\newcommand{\ticky}[4][1]{
+\draw[color=#4](#1*4pt,#2)--(-#1*4pt,#2)node[left=3pt]{\strut #3};
+}
+\newcommand{\tickx}[4][1]{
+\draw[color=#4](#2,#1*4pt)--(#2,-#1*4pt)node[below=3pt]{\strut#3};
+}
+
+\newcommand{\Titel}[4]{
+\thispagestyle{empty}
+{\itshape\Large #3\hfill Arianna Rast\par}
+    \begin{center}
+    \vspace{1.5cm}
+	{\scshape\Large Zusammenfassung der Vorlesung\par}
+	\vspace{1cm}
+	{\huge\bfseries #1\par}
+	\vspace{1cm}
+	{\Large\itshape gehalten von #2\par}
+	{\Large\itshape #4\par}
+	{\Large\itshape Version vom \today \par}
+	\vspace{3cm}
+	\end{center}
+	\tableofcontents
+    \newpage
+    }
+\newcommand{\RN}[1]{\text{\uppercase\expandafter{\romannumeral#1}}}
+%\newcommand{\xRightarrow}[2][]{\ext@arrow 0359\Rightarrowfill@{#1}{#2}}
+    
+\newcounter{my}[section]
+\def\themytheorem{\thesection.\arabic{my}}
+
+\tcbset{
+thmstyle/.style={enhanced, breakable, attach boxed title to top left={yshift=-0.9mm,xshift=2.5mm}, boxrule=0.15mm, boxed title style={boxrule=0.15mm}, fonttitle=\itshape\bfseries},
+bewstyle/.style={skin=enhanced, parbox=false,boxrule=0mm,leftrule=0.5mm,rightrule=0mm, coltitle=black, breakable, fonttitle=\itshape},
+bemstyle/.style={skin=enhanced, parbox=false,boxrule=0mm,leftrule=0.5mm,rightrule=0mm, coltitle=black, breakable, fonttitle=\itshape\bfseries},
+}
+
+ \newtcbtheorem[auto counter, number within= section]{Def}{Definition}{thmstyle,colback=Defcol,colframe=red!55!black!98!white,colbacktitle=red!75!black!30!pink}{Def}
+ 
+\newtcbtheorem[use counter from= Def]{Satz}{Satz}{thmstyle,colback=Satzcol, colframe=blue!80!black!99!cyan,colbacktitle=blue!85!black!80!cyan!60!white,}{Satz}
+
+\newtcbtheorem[use counter from= Def]{Lemma}{Lemma}{thmstyle,colback=Satzcol, colframe=blue!80!black!99!cyan,colbacktitle=blue!85!black!80!cyan!60!white,}{Lemma}
+
+ \newtcbtheorem[use counter from= Def]{Prop}{Proposition}{thmstyle,colback=Satzcol, colframe=blue!80!black!99!cyan,colbacktitle=blue!85!black!80!cyan!60!white,}{Prop}
+ 
+ \newtcbtheorem[use counter from= Def]{Kor}{Korollar}{thmstyle,colback=Korcol, colframe=blue!30!black,colbacktitle=blue!40!white}{Kor}
+ 
+ \newtcbtheorem[use counter from= Def]{Ax}{Axiom}{thmstyle,colback=Axcol, colframe=purple!30!black,colbacktitle=purple!40!white}{Ax}
+ 
+\newtcbtheorem[use counter from= Def]{Bemerkung}{Bemerkung}{bemstyle,colback=Bemcol, colframe=white!30!black,colbacktitle=white}{Bem}
+
+\newtcbtheorem[use counter from= Def]{Notation}{Notation}{bemstyle,colback=Bemcol, colframe=white!30!black,colbacktitle=white}{Notation}
+
+\newtcbtheorem[use counter from= Def]{Motivation}{Motivation}{thmstyle,colback=Motcol, colframe=cyan!30!black,colbacktitle=cyan!40!white}{Mot}
+
+\newtcbtheorem[use counter from= Def]{Beispiel}{Beispiel}{bemstyle,colback=Bspcol, colframe=green!65!olive,colbacktitle=green!10!white!97!olive,}{Beispiel}
+
+
+%\newtcolorbox[use counter from= Def]{Bemerkung}{breakable, empty, coltitle=black, title=\textbf{Bemerkung.}}
+%\newtbctheorem[use counter from= Def]{Bemerkung}{Bemerkung}{thmstyle,colback=cyan!10!white, colframe=cyan!30!black,colbacktitle=cyan!40!white}{Bemerkung}
+\newtcolorbox{Beweis}{bewstyle,colback=yellow!10!white, colframe=yellow!55!orange,colbacktitle=yellow!10!white, title=\textbf{Beweis.}}
+\newtcolorbox{Formel}{bewstyle,colback=blue!90!black!80!cyan!10!white, colframe=blue!30!black,colbacktitle=blue!90!black!80!cyan!10!white,}
+
+% \tcbmaketheorem{Def}{Definition}{thmstyle, colback=red!5,colframe=red!55!black!98!white,colbacktitle=red!75!black!30!pink}{my}{def}
+
+% \tcbmaketheorem{Satz}{Satz}{thmstyle,colback=blue!90!black!80!cyan!10!white, colframe=blue!80!black!99!cyan,colbacktitle=blue!85!black!80!cyan!60!white,}{my}{thm}
+
+% \tcbmaketheorem{Lemma}{Lemma}{thmstyle,colback=blue!90!black!80!cyan!10!white, colframe=blue!80!black!99!cyan,colbacktitle=blue!85!black!80!cyan!60!white,}{my}{lemma}
+
+% \tcbmaketheorem{Prop}{Proposition}{thmstyle,colback=blue!90!black!80!cyan!10!white, colframe=blue!80!black!99!cyan,colbacktitle=blue!85!black!80!cyan!60!white,}{my}{prop}
+
+% \tcbmaketheorem{Kor}{Korollar}{thmstyle,colback=blue!10!white, colframe=blue!30!black,colbacktitle=blue!40!white}{my}{kor}
+
+% \tcbmaketheorem{Beispiel}{Beispiel}{bewstyle,colback=green!10!white!97!olive, colframe=green!65!olive,colbacktitle=green!10!white!97!olive, title=\textbf{Beispiel.}}{my}{bsp}
+
+
+
+\fancypagestyle{ErsteSeite}{%
+	\fancyhf{}%
+	\setlength\headheight{35pt}
+    \fancyhead[R]{\leftmark} %Kopfzeile rechts
+    \fancyfoot[C]{\thepage}
+    }
+    
+    \pagestyle{ErsteSeite}
